@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Data Source" product="MySQL" version="5.5.23" jdbc-version="4.0" driver-version="mysql-connector-java-5.1.18 ( Revision: tonci.grgin@oracle.com-20110930151701-jfj14ddfq48ifkfq )" uuid="56cfa94f-ade3-4673-bdd6-56de7704ef9b">
+    <extra-name-characters>#@</extra-name-characters>
+    <identifier-quote-string>`</identifier-quote-string>
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://localhost</jdbc-url>
+    <user-name>root</user-name>
+    <user-password>dffddfc5dfebdfdddfc3dfeddf99df9bdf8edf8b</user-password>
+    <schema-pattern>facelook.*</schema-pattern>
+    <default-schemas>facelook.*</default-schemas>
+    <libraries>
+      <library>
+        <url>jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.18-bin.jar!/</url>
+      </library>
+      <library>
+        <url>file://$PROJECT_DIR$/lib/mysql-connector-license.txt</url>
+      </library>
+    </libraries>
+    <table name="datahosts" schema="" catalog="facelook" type="TABLE">
+      <column name="HostID" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="Conn" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="hostid" />
+    </table>
+    <table name="links" schema="" catalog="facelook" type="TABLE">
+      <column name="user1ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="user2ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="accepted" sqlType="BIT" length="0" precision="0" nullable="false" jdbcType="-7" />
+      <column name="type" sqlType="ENUM" length="13" precision="0" nullable="true" jdbcType="1" />
+      <primary-key name="PRIMARY" columns="user1id" />
+    </table>
+    <table name="posts" schema="" catalog="facelook" type="TABLE">
+      <column name="Id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="Content" sqlType="TEXT" length="65535" precision="0" nullable="false" jdbcType="-1" />
+      <column name="Date" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" />
+      <column name="Type" sqlType="ENUM" length="12" precision="0" nullable="true" jdbcType="1" />
+      <primary-key name="PRIMARY" columns="id" />
+      <index name="Id_UNIQUE" unique="true" columns="Id" />
+    </table>
+    <table name="sharding" schema="" catalog="facelook" type="TABLE">
+      <column name="userID" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="shardHostID" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="username" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12" />
+      <column name="hostID" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" />
+      <primary-key name="PRIMARY" columns="userid,shardhostid" />
+      <foreign-key name="fk_Sharding_DataHosts1" columns="shardHostID" ref-table="datahosts" ref-schema="" ref-catalog="facelook" ref-columns="HostID" />
+      <index name="userShardID_UNIQUE" unique="true" columns="userID" />
+      <index name="username_UNIQUE" unique="true" columns="username" />
+    </table>
+    <table name="user_links" schema="" catalog="facelook" type="TABLE">
+      <column name="User_LinkID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="User_ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <primary-key name="PRIMARY" columns="user_linkid,user_id" />
+      <foreign-key name="fk_User_Links_Links1" columns="User_LinkID" ref-table="links" ref-schema="" ref-catalog="facelook" ref-columns="user1ID" />
+      <foreign-key name="fk_User_Links_users1" columns="User_ID" ref-table="users" ref-schema="" ref-catalog="facelook" ref-columns="ID" />
+    </table>
+    <table name="user_posts" schema="" catalog="facelook" type="TABLE">
+      <column name="UserId" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="PostId" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" />
+      <primary-key name="PRIMARY" columns="postid,userid" />
+      <foreign-key name="fk_User_Posts_users1" columns="UserId" ref-table="users" ref-schema="" ref-catalog="facelook" ref-columns="ID" />
+      <foreign-key name="fk_User_Posts_Posts1" columns="PostId" ref-table="posts" ref-schema="" ref-catalog="facelook" ref-columns="Id" />
+    </table>
+    <table name="users" schema="" catalog="facelook" type="TABLE">
+      <column name="ID" sqlType="BIGINT" length="19" precision="0" nullable="false" jdbcType="-5" />
+      <column name="RealName" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12" />
+      <column name="Username" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12" />
+      <column name="Password" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12" />
+      <column name="Email" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12" />
+      <column name="Birthdate" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91" />
+      <column name="LastLogin" sqlType="TIMESTAMP" length="19" precision="0" nullable="true" jdbcType="93" />
+      <primary-key name="PRIMARY" columns="id" />
+      <index name="ID_UNIQUE" unique="true" columns="ID" />
+    </table>
+  </data-source>
+</component>

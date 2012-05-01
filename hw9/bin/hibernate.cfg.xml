@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property username="connection.url">jdbc:mysql://localhost/facelook</property>
+        <property username="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property username="connection.username">root</property>
+        <property username="connection.password">WoAwiG31$!</property>
+        <mapping class="edu.cmu.cs214.hw9.facelook.data.orm.Link"/>
+        <mapping resource="edu/cmu/cs214/hw9/facelook/data/orm/Links.hbm.xml"/>
+        <mapping class="edu.cmu.cs214.hw9.facelook.data.orm.Post"/>
+        <mapping resource="edu/cmu/cs214/hw9/facelook/data/orm/Posts.hbm.xml"/>
+        <mapping class="edu.cmu.cs214.hw9.facelook.data.orm.User"/>
+        <mapping resource="edu/cmu/cs214/hw9/facelook/data/orm/Users.hbm.xml"/>
+        <mapping class="edu.cmu.cs214.hw9.facelook.data.orm.UserPosts"/>
+        <mapping resource="edu/cmu/cs214/hw9/facelook/data/orm/UserPosts.hbm.xml"/>
+        <mapping class="edu.cmu.cs214.hw9.facelook.data.orm.UserLinks"/>
+        <mapping resource="edu/cmu/cs214/hw9/facelook/data/orm/UserLinks.hbm.xml"/>
+        <mapping class="edu.cmu.cs214.hw9.facelook.data.orm.Datahosts"/>
+        <mapping resource="edu/cmu/cs214/hw9/facelook/data/orm/Datahosts.hbm.xml"/>
+        <mapping class="edu.cmu.cs214.hw9.facelook.data.orm.Sharding"/>
+        <mapping resource="edu/cmu/cs214/hw9/facelook/data/orm/Sharding.hbm.xml"/>
+        <!-- DB schema will be updated if needed -->
+        <!-- <property username="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

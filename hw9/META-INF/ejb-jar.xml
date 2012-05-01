@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd"
+         version="3.1">
+    <enterprise-beans>
+        <entity>
+            <ejb-username>UserEntityEJB</ejb-username>
+            <home>edu.cmu.cs214.hw9.facelook.EJB.UserEntityHome</home>
+            <remote>edu.cmu.cs214.hw9.facelook.EJB.UserEntity</remote>
+            <local-home>edu.cmu.cs214.hw9.facelook.EJB.LocalUserEntityHome</local-home>
+            <local>edu.cmu.cs214.hw9.facelook.EJB.LocalUserEntity</local>
+            <ejb-class>edu.cmu.cs214.hw9.facelook.EJB.UserEntityBean</ejb-class>
+            <persistence-type>Container</persistence-type>
+            <prim-key-class>java.lang.Integer</prim-key-class>
+            <reentrant>true</reentrant>
+            <cmp-version>2.x</cmp-version>
+            <abstract-schema-username>UserEntityEJB</abstract-schema-username>
+            <cmp-field>
+                <description>The user ID</description>
+                <field-username>userID</field-username>
+            </cmp-field>
+            <cmp-field>
+                <description>The Username</description>
+                <field-username>username</field-username>
+            </cmp-field>
+            <cmp-field>
+                <description>The user's password</description>
+                <field-username>password</field-username>
+            </cmp-field>
+            <cmp-field>
+                <field-username>email</field-username>
+            </cmp-field>
+            <cmp-field>
+                <field-username>birthdate</field-username>
+            </cmp-field>
+            <cmp-field>
+                <field-username>lastseen</field-username>
+            </cmp-field>
+            <primkey-field>userID</primkey-field>
+        </entity>
+    </enterprise-beans>
+</ejb-jar>
